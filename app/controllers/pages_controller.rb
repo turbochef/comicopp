@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-  	@comics = Comic.all
+  	@newest = Comic.all.order('created_at DESC')
   end
 
   def about

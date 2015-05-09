@@ -1,9 +1,9 @@
 
-<% @comics.each do |comic| %>
+<% @newest.each do |comic| %>
 	<%= link_to(comic) do %>
-	  
-        <%= image_tag comic.image.url(:medium) %>
-<%= comic.title %>
-<%= comic.description %>
-<% end %>
+		<%= image_tag comic.image.url(:medium) %>
+		<%= comic.title %>
+		<%= comic.description %>
+	<% end %>
+
 <% end %>
