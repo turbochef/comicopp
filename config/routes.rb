@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :comics
+  resources :comics do
+    member do
+      put "like",  to: "comics#upvote"
+      put "dislike",  to: "comics#downvote"
+    end
+  end
 
   devise_for :users
   get 'pages/home'

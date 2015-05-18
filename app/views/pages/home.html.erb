@@ -5,5 +5,7 @@
 		<%= comic.title %>
 		<%= comic.description %>
 	<% end %>
-
+	<%= link_to "upvote", like_comic_path(comic), method: :put %>
+	<%= link_to "downvote", dislike_comic_path(comic), method: :put %>
+	<%= comic.score %>
 <% end %>

@@ -1,7 +1,7 @@
 class ComicsController < ApplicationController
 
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :index, :new]
-  before_action :set_comic, only: [:show, :edit, :update, :destroy]
+  before_action :set_comic, only: [:upvote, :downvote, :show, :edit, :update, :destroy]
 
   # GET /comics
   # GET /comics.json
@@ -13,6 +13,18 @@ class ComicsController < ApplicationController
   # GET /comics/1.json
   def show
   end
+
+  def upvote
+    @comic.upvote_by current_user
+    redirect_to root_path
+  end
+
+  def downvote
+    @comic.downvote_by current_user
+    redirect_to root_path
+  end
+
+
 
   # GET /comics/new
   def new
@@ -30,6 +42,7 @@ class ComicsController < ApplicationController
 
     respond_to do |format|
       if @comic.save
+        @comic.upvote_by current_user
         format.html { redirect_to comics_url, notice: 'Comic was successfully created.' }
         format.json { render :show, status: :created, location: @comic }
       else

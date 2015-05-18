@@ -22,6 +22,8 @@
         <td><%= link_to 'Edit', edit_comic_path(comic) %></td>
         <td><%= link_to 'Destroy', comic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
+      <%= comic.score %>
     <% end %>
   </tbody>
 </table>
