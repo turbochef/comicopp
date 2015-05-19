@@ -6,7 +6,15 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, controllers: {sessions: "users/sessions"}
+
+  devise_scope :user do
+    resources :users do 
+      put 'subscribe', to: 'users/sessions#subscribe'
+      put 'unsubscribe', to: 'users/sessions#unsubscribe'
+    end
+  end
+
   get 'pages/home'
 
   get 'pages/about'

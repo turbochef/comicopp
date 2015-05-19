@@ -8,4 +8,8 @@
 	<%= link_to "upvote", like_comic_path(comic), method: :put %>
 	<%= link_to "downvote", dislike_comic_path(comic), method: :put %>
 	<%= comic.score %>
+
+	<%= link_to "subscribe", user_subscribe_path(comic.user), method: :put  %>
+	<%= link_to "unsubscribe", user_unsubscribe_path(comic.user), method: :put  %>
+
 <% end %>
