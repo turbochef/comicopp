@@ -16,12 +16,12 @@ class ComicsController < ApplicationController
 
   def upvote
     @comic.upvote_by current_user
-    redirect_to root_path
+    redirect_to @comic
   end
 
   def downvote
     @comic.downvote_by current_user
-    redirect_to root_path
+    redirect_to @comic
   end
 
 

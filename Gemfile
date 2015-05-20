@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'socialization', '~> 1.1.0'
 
 gem 'acts_as_votable', '~> 0.10.0'
+
+gem 'foundation-rails', '~> 5.5.2.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 3.4.1'

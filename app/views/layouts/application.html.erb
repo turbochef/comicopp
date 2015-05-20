@@ -1,25 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Comicopp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<% if(current_user) %>
+    <title><%= content_for?(:title) ? yield(:title) : "comicopp" %></title>
 
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<%= link_to "Edit account", edit_user_registration_path %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<% else %>
+  <body>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
-<%= link_to "Register", new_user_registration_path %>
-<%= link_to "Sign in", new_user_session_path %>
 
-<% end %>
-<%= yield %>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+      <nav class="header"></nav>
+        <a class="left-off-canvas-toggle" href="#" >
+          <div class="menu">
+            <div class="top-bar"></div>
+            <div class="middle-bar"></div>
+            <div class="bottom-bar"></div>
+          </div>
+        </a>
+      </nav>
+        <!-- Off Canvas Menu -->
+        <aside class="left-off-canvas-menu">
+            <!-- whatever you want goes here -->
+            <ul class="side-nav main">
+              <li><a class="is-active" href="#">CMCur</a></li>
+              <li><a href="#">smarter</a></li>
+              <li><a href="#">easier</a></li>
+              <li><a href="#">all you</a></li>
+            </ul>
+            <ul class="side-nav secondary">
+              <li><a href="#">about us</a></li>
+              <li><a href="#">contact us</a></li>
+              <li><a href="#">press</a></li>
+              <li><a href="#">blog</a></li>
+            </ul>
+        </aside>
+        <!-- main content goes here -->
+        <section class="hero">
+        <div class="small-10">
+          <%= yield %>
+        </div>
+        </section>
 
-</body>
+      <!-- close the off-canvas menu -->
+      <a class="exit-off-canvas"></a>
+
+      </div>
+    </div>
+
+
+  </body>
 </html>
