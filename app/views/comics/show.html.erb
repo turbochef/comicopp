@@ -4,27 +4,31 @@
   <strong>Title:</strong>
   <%= @comic.title %>
 </p>
+<%= image_tag @comic.image.url() %>
+	
+	
+
+
+	
+	<%= link_to "upvote", like_comic_path(@comic), method: :put %>
+	<%= link_to "downvote", dislike_comic_path(@comic), method: :put %>
+
+
+
+
+	<% if(current_user and current_user.follows?(@comic.user)) %>
+		<%= link_to "unsubscribe", user_unsubscribe_path(@comic.user), method: :put  %>
+	<% elsif(current_user) %>
+		<%= link_to "subscribe", user_subscribe_path(@comic.user), method: :put  %>
+	<% else %>
+		
+	<% end %>
+
+	<%= @comic.score %>
+
 
 <p>
   <strong>Description:</strong>
   <%= @comic.description %>
 </p>
 
-	
-	
-
-
-<% if(current_user) %>
-	
-	<%= link_to "upvote", like_comic_path(@comic), method: :put %>
-	<%= link_to "downvote", dislike_comic_path(@comic), method: :put %>
-
-	<% if(current_user.follows?(@comic)) %>
-		<%= link_to "subscribe", user_subscribe_path(@comic.user), method: :put  %>
-	<% else %>
-		<%= link_to "unsubscribe", user_unsubscribe_path(@comic.user), method: :put  %>
-	<% end %>
-<% end %>
-
-
-	<%= @comic.score %>

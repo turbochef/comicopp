@@ -1,6 +1,6 @@
 class ComicsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :index, :new]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :index, :new, :upvote, :downvote]
   before_action :set_comic, only: [:upvote, :downvote, :show, :edit, :update, :destroy]
 
   # GET /comics

@@ -1,6 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
 	before_action :set_user, only: [:subscribe, :unsubscribe]
-
 	def subscribe
 		current_user.follow!(@user)
 	end
