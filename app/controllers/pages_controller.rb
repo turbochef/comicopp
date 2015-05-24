@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   end
 
   def popular
-  	@popular = Comic.all.votes.all.order('votes DESC')
+  	@popular = Comic.order("cached_votes_score DESC")
   end
 
   def about
